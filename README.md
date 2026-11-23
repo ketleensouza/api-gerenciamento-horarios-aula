@@ -2,6 +2,8 @@
 
 API web em Java com Spring Boot para organizacao e gerenciamento de horarios de aula.
 
+Repositorio: https://github.com/ketleensouza/api-gerenciamento-horarios-aula
+
 ## Tecnologias
 
 - Java 11
@@ -28,7 +30,7 @@ API web em Java com Spring Boot para organizacao e gerenciamento de horarios de 
 ## Como executar
 
 ```bash
-cd ~/Área\ de\ trabalho/Projetos/sistemadebiblioteca
+cd <pasta-do-projeto>
 mvn spring-boot:run
 ```
 
