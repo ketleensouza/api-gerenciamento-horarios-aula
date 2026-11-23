@@ -1,93 +1,72 @@
-# Sistema de Biblioteca
+# Sistema de Horarios de Aula
 
-Sistema de gestão de biblioteca em Java com interface CLI, persistência em CSV e estruturas de dados customizadas.
+API web em Java com Spring Boot para organizacao e gerenciamento de horarios de aula.
 
-Alunos: Ketleen de Souza Santos, Arthur Xavier dos Santos, Kenedy Anderson Souza de Castro.
+## Tecnologias
 
----
+- Java 11
+- Spring Boot 2.7
+- Spring Web (API REST)
+- Spring Data JPA (ORM)
+- Spring Security (Basic Auth)
+- H2 Database
+- Springdoc OpenAPI (Swagger)
 
-## Quick Start
+## Entidades
 
-### 1. Instalar Dependências
-```bash
-sudo apt-get install openjdk-17-jdk maven
-```
+- Professores
+- Disciplinas
+- Turmas
+- Horarios
 
-### 2. Compilar
+## Funcionalidades obrigatorias
+
+- Cadastro completo (CRUD) de professores, disciplinas, turmas e horarios
+- Visualizacao de horarios por professor
+- Visualizacao de horarios por turma
+
+## Como executar
+
 ```bash
 cd ~/Área\ de\ trabalho/Projetos/sistemadebiblioteca
-mvn clean compile -DskipTests
+mvn spring-boot:run
 ```
 
-### 3. Rodar
-```bash
-mvn exec:java -Dexec.mainClass="br.edu.biblioteca.ui.MenuPrincipal" -DskipTests
-```
+## Documentacao Swagger
 
----
+- Swagger UI: http://localhost:8080/swagger-ui.html
+- OpenAPI JSON: http://localhost:8080/v3/api-docs
 
-## Menu Principal
+## Autenticacao basica
 
-```
-1 - Catálogo de Livros          (Listar, buscar, cadastrar, atualizar, remover)
-2 - Gerenciar Usuários          (CRUD de usuários)
-3 - Empréstimos                 (Novo empréstimo, devolução, atrasados)
-4 - Reservas                    (Fazer, cancelar, listar reservas)
-5 - Relatórios                  (Estatísticas e relatórios gerais)
-0 - Sair
-```
+- Usuario: `admin`
+- Senha: `admin123`
 
----
+## Endpoints principais
 
-## Estrutura
+- `GET|POST /api/professores`
+- `GET|PUT|DELETE /api/professores/{id}`
+- `GET|POST /api/disciplinas`
+- `GET|PUT|DELETE /api/disciplinas/{id}`
+- `GET|POST /api/turmas`
+- `GET|PUT|DELETE /api/turmas/{id}`
+- `GET|POST /api/horarios`
+- `GET|PUT|DELETE /api/horarios/{id}`
+- `GET /api/horarios/professor/{professorId}`
+- `GET /api/horarios/turma/{turmaId}`
 
-```
-src/main/java/br/edu/biblioteca/
-├── action/       → Padrão Command
-├── model/        → Livro, Usuario, Emprestimo, Reserva, Exemplar
-├── repository/   → FileStorage, LivroRepository, UsuarioRepository...
-├── service/      → Lógica de negócio
-├── structures/   → Vetor, Pilha, Fila, ArvoreBST, Grafo
-└── ui/           → MenuPrincipal, TelaCatalogo, TelaUsuarios...
-```
+## Persistencia
 
----
-
-## Dados
-
-Salvos em `data/*.csv`:
-- `livros.csv` - Catálogo
-- `usuarios.csv` - Usuários
-- `exemplares.csv` - Cópias
-- `emprestimos.csv` - Empréstimos
-- `reservas.csv` - Reservas
-
----
+O projeto usa ORM com Spring Data JPA. Neste ajuste foi configurado H2 em memoria para facilitar execucao local e testes.
 
 ## Testes
 
 ```bash
-# Todos os testes
 mvn test
-
-# Teste específico
-mvn test -Dtest=VetorTest
-mvn test -Dtest=PilhaTest
 ```
 
----
+## Relatorio
 
-## Troubleshooting
-
-**Maven não encontrado:**
-```bash
-sudo apt-get install maven
-```
-
-**Limparcache:**
-```bash
-mvn clean
-rm -rf data/
-```
+Veja o arquivo `RELATORIO_EVOLUCAO.md` para o resumo da evolucao do projeto.
 
 
