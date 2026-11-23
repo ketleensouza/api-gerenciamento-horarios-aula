@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -26,6 +27,11 @@ public class ApiExceptionHandler {
             errors.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
         return buildResponse(HttpStatus.BAD_REQUEST, "Erro de validacao", errors);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, Object>> handleDataIntegrity(DataIntegrityViolationException ex) {
+        return buildResponse(HttpStatus.CONFLICT, "Violacao de integridade dos dados", null);
     }
 
     @ExceptionHandler(Exception.class)

@@ -37,12 +37,12 @@ public class Horario {
     private LocalTime horaFim;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "professor_id", nullable = false)
     private Professor professor;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "turma_id", nullable = false)
     private Turma turma;
 

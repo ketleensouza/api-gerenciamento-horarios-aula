@@ -29,7 +29,7 @@ public class Turma {
     private String semestre;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "disciplina_id", nullable = false)
     private Disciplina disciplina;
 
