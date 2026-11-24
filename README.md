@@ -67,8 +67,6 @@ O projeto usa ORM com Spring Data JPA. Neste ajuste foi configurado H2 em memori
 mvn test
 ```
 
-## Relatorio
 
-Veja o arquivo `RELATORIO_EVOLUCAO.md` para o resumo da evolucao do projeto.
 
 
